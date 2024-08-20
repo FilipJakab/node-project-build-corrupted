@@ -16,9 +16,16 @@ I observed that the error is tied to the presence of `--watch` CLI switch which 
   - **3** apps should be rendered for the build to be successful
   - less than **3** means that at least one app has corrupted output (see devtools console for hints)
 
-## Successful approach
+### Successful approach
 - `npm i`
-- `npm run build` (starts dev server and HTTP server in output dir)
-- `live-server ./output` and 
+- `npm run build` (just *builds* the project)
+- `live-server ./output`
 - Navigate to `http://localhost:8080`
 - Observe output: **3** apps should be rendered
+
+## Project structure description
+
+In `./src/lib/apps` are 3 separate applications. The core of building process is a `./builder.js` file. This code looks into `./src/lib/apps`
+and starts *build* process for each found app (plus one more - build of the `./src/lib/main.ts` file).
+This `main.ts` file contains `AppsManager` (and other code omitted for brevity). Each of the individual apps register itself against this `AppsManager` and this manager
+is responsible for creating and mounting registered apps at runtime.
