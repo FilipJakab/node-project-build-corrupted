@@ -2,7 +2,8 @@
 
 Hello, this project is to reproduce issue when building this project.
 
-The following screenshot depicts the error:
+The following screenshot depicts the error (exact location in js build output, that contains corrupted code):
+
 ![js-build-output-error.png](./js-build-output-error.png)
 
 I observed that the error is tied to the presence of `--watch` CLI switch which enables file changes watch.
